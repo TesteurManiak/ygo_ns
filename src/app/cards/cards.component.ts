@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { Card } from "./card";
-import { CardImage } from "./card_image";
 
 @Component({
     moduleId: module.id,

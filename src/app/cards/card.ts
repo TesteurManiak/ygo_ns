@@ -1,5 +1,6 @@
 import { CardImage } from "./card_image";
 import { CardSet } from "./card_set";
+import { CardPrice } from "./card_price";
 import { Serializable } from "../serializable/serializable";
 
 export class Card implements Serializable<Card> {
@@ -14,6 +15,7 @@ export class Card implements Serializable<Card> {
     attribute: string;
     card_sets: CardSet[];
     card_images: CardImage[];
+    card_prices: CardPrice[];
 
     deserialize(input): Card {
         this.id = input.id;
@@ -34,6 +36,11 @@ export class Card implements Serializable<Card> {
         this.card_sets = [];
         for (let card_set of input.card_sets) {
             this.card_sets.push(new CardSet().deserialize(card_set));
+        }
+
+        this.card_prices = [];
+        for (let price of input.card_prices) {
+            this.card_prices.push(new CardPrice().deserialize(price));
         }
 
         return this;
