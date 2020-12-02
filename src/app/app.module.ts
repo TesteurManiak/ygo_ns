@@ -5,7 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
-import { CardsComponent } from "./cards/cards.component"
+import { CardsComponent } from "./cards/cards.component";
+import { CardDetailComponent } from "./cards/card-detail.component";
 
 @NgModule({
     bootstrap: [
@@ -18,7 +19,8 @@ import { CardsComponent } from "./cards/cards.component"
     ],
     declarations: [
         AppComponent,
-        CardsComponent
+        CardsComponent,
+        CardDetailComponent
     ],
     providers: [],
     schemas: [

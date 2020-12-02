@@ -10,7 +10,7 @@ import { Card } from "./card";
     templateUrl: "./cards.component.html"
 })
 export class CardsComponent implements OnInit {
-    public items: any;
+    public items: Card[];
 
     public constructor(private http: HttpClient) { }
 

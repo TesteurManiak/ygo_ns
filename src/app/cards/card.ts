@@ -34,8 +34,10 @@ export class Card implements Serializable<Card> {
         }
 
         this.card_sets = [];
-        for (let card_set of input.card_sets) {
-            this.card_sets.push(new CardSet().deserialize(card_set));
+        if (input.card_sets != null) {
+            for (let card_set of input.card_sets) {
+                this.card_sets.push(new CardSet().deserialize(card_set));
+            }
         }
 
         this.card_prices = [];
