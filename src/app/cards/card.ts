@@ -1,6 +1,3 @@
-import { CardImage } from "./card_image";
-import { CardSet } from "./card_set";
-import { CardPrice } from "./card_price";
 import { Serializable } from "../serializable/serializable";
 
 export class Card implements Serializable<Card> {
@@ -44,6 +41,56 @@ export class Card implements Serializable<Card> {
         for (let price of input.card_prices) {
             this.card_prices.push(new CardPrice().deserialize(price));
         }
+
+        return this;
+    }
+}
+
+export class CardImage implements Serializable<CardImage> {
+    id: number;
+    image_url: string;
+    image_url_small: string;
+
+    deserialize(input): CardImage {
+        this.id = input.id;
+        this.image_url = input.image_url;
+        this.image_url_small = input.image_url_small;
+
+        return this;
+    }
+}
+
+export class CardPrice implements Serializable<CardPrice> {
+    cardmarket_price: string;
+    tcgplayer_price: string;
+    ebay_price: string;
+    amazon_price: string;
+    coolstuffinc_price: string;
+
+    deserialize(input): CardPrice {
+        this.cardmarket_price = input.cardmarket_price;
+        this.tcgplayer_price = input.tcgplayer_price;
+        this.ebay_price = input.ebay_price;
+        this.amazon_price = input.amazon_price;
+        this.coolstuffinc_price = input.coolstuffinc_price;
+
+        return this;
+    }
+}
+
+export class CardSet implements Serializable<CardSet> {
+    set_name: string;
+    set_code: string;
+    set_rarity: string;
+    set_rarity_code: string;
+    set_price: string;
+
+    deserialize(input): CardSet {
+        this.set_name = input.set_name;
+        this.set_code = input.set_code;
+        this.set_rarity = input.set_rarity;
+        this.set_rarity_code = input.set_rarity_code;
+        this.set_price = input.set_price;
 
         return this;
     }

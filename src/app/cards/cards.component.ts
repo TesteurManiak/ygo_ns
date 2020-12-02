@@ -12,13 +12,13 @@ import { Card } from "./card";
 export class CardsComponent implements OnInit {
     public items: Card[];
 
-    public constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         this.getCards();
     }
 
-    public getCards() {
+    getCards() {
         this.http.get("https://db.ygoprodeck.com/api/v7/cardinfo.php").pipe(map(result => (<any>result).data)).subscribe(result => {
             var generatedItems: Card[] = [];
             for (let card of result) {
