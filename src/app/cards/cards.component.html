@@ -1,6 +1,6 @@
 <ActionBar title="YGO NS"></ActionBar>
 <StackLayout orientation="vertical">
-    <ns-searchbar></ns-searchbar>
+    <ns-searchbar (onFilterChanged)="filterChangedHandler($event)"></ns-searchbar>
     <GridLayout>
         <ListView [items]="items" class="list-group">
             <ng-template let-item="item">
