@@ -6,8 +6,9 @@ import { map } from 'rxjs/operators';
 import { Card } from "./card";
 
 @Component({
-    selector: "ns-details",
+    selector: "ns-card-details",
     templateUrl: "./card-detail.component.html",
+    moduleId: module.id
 })
 export class CardDetailComponent implements OnInit {
     public card: Card;

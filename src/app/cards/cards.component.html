@@ -1,13 +1,17 @@
 <ActionBar title="YGO NS"></ActionBar>
-<GridLayout>
-    <ListView [items]="items" class="list-group">
-        <ng-template let-item="item">
-            <GridLayout [nsRouterLink]="['/card', item.id]" class="list-group-item" rows="auto, auto, auto" columns="50, *">
-                <Image [src]="item.card_images[0].image_url_small" rowSpan="3" row="0" col="0"></Image>
-                <Label [text]="item.name" row="0" col="1"></Label>
-                <Label [text]="item.type" row="1" col="1"></Label>
-                <Label [text]="item.race" row="2" col="1"></Label>
-            </GridLayout>
-        </ng-template>
-    </ListView>
-</GridLayout>
+<StackLayout orientation="vertical">
+    <ns-searchbar></ns-searchbar>
+    <GridLayout>
+        <ListView [items]="items" class="list-group">
+            <ng-template let-item="item">
+                <GridLayout [nsRouterLink]="['/card', item.id]" class="list-group-item" rows="auto, auto, auto"
+                    columns="50, *">
+                    <Image [src]="item.card_images[0].image_url_small" rowSpan="3" row="0" col="0"></Image>
+                    <Label [text]="item.name" row="0" col="1"></Label>
+                    <Label [text]="item.type" row="1" col="1"></Label>
+                    <Label [text]="item.race" row="2" col="1"></Label>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+    </GridLayout>
+</StackLayout>

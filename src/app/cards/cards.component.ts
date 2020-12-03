@@ -6,7 +6,7 @@ import { Card } from "./card";
 
 @Component({
     moduleId: module.id,
-    selector: "ns-items",
+    selector: "ns-cards",
     templateUrl: "./cards.component.html"
 })
 export class CardsComponent implements OnInit {

@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 
 import { CardsComponent } from "./cards/cards.component";
 import { CardDetailComponent } from "./cards/card-detail.component";
+import { SearchBarComponent } from "./search_bar/searchbar.component";
 
 @NgModule({
     bootstrap: [
@@ -20,7 +21,8 @@ import { CardDetailComponent } from "./cards/card-detail.component";
     declarations: [
         AppComponent,
         CardsComponent,
-        CardDetailComponent
+        CardDetailComponent,
+        SearchBarComponent
     ],
     providers: [],
     schemas: [

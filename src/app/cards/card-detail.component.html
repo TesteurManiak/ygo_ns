@@ -1,9 +1,17 @@
-<ActionBar title="Card Detail" ></ActionBar>
+<ActionBar title="{{card.name}}"></ActionBar>
 
-<FlexboxLayout flexDirection="column">
-    <FlexboxLayout class="m-15">
-        <Label class="h2" [text]="card.id + '. '"></Label>
-        <Label class="h2" [text]="card.name"></Label>
-    </FlexboxLayout>
-    <Label class="h4 m-15" [text]="card.type"></Label>
-</FlexboxLayout>
+<ScrollView orientation="vertical">
+    <StackLayout class="p-16">
+        <Image [src]="card.card_images[0].image_url" loadMode="async"></Image>
+        <Label class="h2" [text]="card.type"></Label>
+        <TextView class="h3" editable="false" [text]="card.desc"></TextView>
+        <!-- <GridLayout rows="*" height="1000px">
+            <RadCartesianChart tkExampleTitle tkToggleNavButton>
+                <CategoricalAxis tkCartesianHorizontalAxis></CategoricalAxis>
+                <LinearAxis tkCartesianVerticalAxis></LinearAxis>
+                <LineSeries tkCartesianSeries [items]="categoricalSource" categoryProperty="Platform"
+                    valueProperty="Price"></LineSeries>
+            </RadCartesianChart>
+        </GridLayout> -->
+    </StackLayout>
+</ScrollView>
