@@ -4,7 +4,8 @@ import { TextField } from "@nativescript/core/ui/text-field";
 @Component({
     selector: "ns-searchbar",
     moduleId: module.id,
-    templateUrl: "./searchbar.component.html"
+    templateUrl: "./searchbar.component.html",
+    styleUrls: ["./searchbar.component.css"],
 })
 export class SearchBarComponent {
     @Output() onFilterChanged: EventEmitter<string> = new EventEmitter();
