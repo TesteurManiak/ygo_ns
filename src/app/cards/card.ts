@@ -14,6 +14,14 @@ export class Card implements Serializable<Card> {
     card_images: CardImage[];
     card_prices: CardPrice[];
 
+    get typeImgUrl(): string {
+        return "https://ygoprodeck.com/pics/icons/" + this.type + ".jpg";
+    }
+
+    get raceImgUrl(): string {
+        return "https://ygoprodeck.com/pics/icons/" + this.race + ".png";
+    }
+
     deserialize(input): Card {
         this.id = input.id;
         this.name = input.name;

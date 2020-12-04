@@ -1,0 +1,33 @@
+.bar-card-details {
+    font-size: 20px;
+}
+
+.card-data-typing {
+    font-size: 14px;
+    padding-bottom: 6px;
+}
+
+.card-data-race {
+    font-size: 14px;
+    padding-bottom: 6px;
+}
+
+.card-img Image {
+    margin-bottom: 12px;
+    height: 390px;
+    max-height: 100%;
+    max-width: 100%;
+    box-shadow: 1px 1px 8px rgba(0,0,0,.5);
+    image-rendering: -webkit-optimize-contrast;
+    vertical-align: middle;
+}
+
+.card-img-data Image {
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.card-data-description {
+    font-size: 12px;
+    text-align: center;
+}

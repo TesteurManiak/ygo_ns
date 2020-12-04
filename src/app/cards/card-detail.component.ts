@@ -8,6 +8,7 @@ import { Card } from "./card";
 @Component({
     selector: "ns-card-details",
     templateUrl: "./card-detail.component.html",
+    styleUrls: ["./card-detail.component.css"],
     moduleId: module.id
 })
 export class CardDetailComponent implements OnInit {

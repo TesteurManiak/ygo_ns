@@ -1,10 +1,18 @@
-<ActionBar title="{{card.name}}"></ActionBar>
+<ActionBar class="bar-card-details" title="{{card.name}}"></ActionBar>
 
 <ScrollView orientation="vertical">
     <StackLayout class="p-16">
-        <Image [src]="card.card_images[0].image_url" loadMode="async"></Image>
-        <Label class="h2" [text]="card.type"></Label>
-        <TextView class="h3" editable="false" [text]="card.desc"></TextView>
+        <Image class="card-img" [src]="card.card_images[0].image_url" loadMode="async"></Image>
+        <GridLayout columns="auto, auto" rows="auto, auto, auto">
+            <Image class="card-img-data" src="https://ygoprodeck.com/wp-content/uploads/2017/01/level.png" row="0"
+                column="0" height="20" width="20"></Image>
+            <Label class="card-data-typing" [text]="card.level" row="0" column="1"></Label>
+            <Image class="card-img-data" [src]="card.typeImgUrl" row="0" column="0" height="20" width="14"></Image>
+            <Label class="card-data-typing" [text]="card.type" row="0" column="1"></Label>
+            <Image class="card-img-data" [src]="card.raceImgUrl" row="1" column="0" height="20" width="20"></Image>
+            <Label class="card-data-race" [text]="card.race" row="1" column="1"></Label>
+        </GridLayout>
+        <TextView class="card-data-description" editable="false" [text]="card.desc"></TextView>
         <!-- <GridLayout rows="*" height="1000px">
             <RadCartesianChart tkExampleTitle tkToggleNavButton>
                 <CategoricalAxis tkCartesianHorizontalAxis></CategoricalAxis>
