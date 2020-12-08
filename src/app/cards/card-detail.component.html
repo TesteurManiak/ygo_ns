@@ -3,10 +3,10 @@
 <ScrollView orientation="vertical">
     <StackLayout class="p-16">
         <Image class="card-img" [src]="card.card_images[0].image_url" loadMode="async"></Image>
-        <GridLayout columns="auto, auto" rows="auto, auto, auto">
+        <GridLayout columns="auto, auto, auto, auto" rows="auto, auto, auto">
             <Image class="card-img-data" src="https://ygoprodeck.com/wp-content/uploads/2017/01/level.png" row="0"
-                column="0" height="20" width="20"></Image>
-            <Label class="card-data-typing" [text]="card.level" row="0" column="1"></Label>
+                column="2" height="20" width="20" visibility="{{ card.level > 0 ? 'visible' : 'collapse' }}"></Image>
+            <Label class="card-data-typing" [text]="card.level" row="0" column="3" visibility="{{ card.level > 0 ? 'visible' : 'collapse' }}"></Label>
             <Image class="card-img-data" [src]="card.typeImgUrl" row="0" column="0" height="20" width="14"></Image>
             <Label class="card-data-typing" [text]="card.type" row="0" column="1"></Label>
             <Image class="card-img-data" [src]="card.raceImgUrl" row="1" column="0" height="20" width="20"></Image>
