@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router";
 import { map } from 'rxjs/operators';
+import { RouterExtensions } from "@nativescript/angular";
 
 import { Card } from "./card";
 
@@ -14,7 +15,7 @@ import { Card } from "./card";
 export class CardDetailComponent implements OnInit {
     public card: Card;
 
-    constructor(private route: ActivatedRoute, private http: HttpClient) { }
+    constructor(private route: ActivatedRoute, private routerExtensions: RouterExtensions, private http: HttpClient) { }
 
     ngOnInit(): void {
         const id = +this.route.snapshot.params.id;
@@ -30,5 +31,10 @@ export class CardDetailComponent implements OnInit {
         }, error => {
             console.error(error);
         });
+    }
+
+    onNavBtnTap() {
+        console.log("Tapped on back btn");
+        this.routerExtensions.back();
     }
 }

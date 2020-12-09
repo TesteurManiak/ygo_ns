@@ -1,6 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "@nativescript/angular";
+import { NativeScriptModule, NativeScriptRouterModule } from "@nativescript/angular";
 import { HttpClientModule } from '@angular/common/http';
+import { NativeScriptUIChartModule } from 'nativescript-ui-chart/angular';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -16,7 +17,9 @@ import { SearchBarComponent } from "./search_bar/searchbar.component";
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        NativeScriptUIChartModule,
+        NativeScriptRouterModule
     ],
     declarations: [
         AppComponent,
