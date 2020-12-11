@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule, NativeScriptRouterModule } from "@nativescript/angular";
 import { HttpClientModule } from '@angular/common/http';
-import { NativeScriptUIChartModule } from 'nativescript-ui-chart/angular';
+import { registerElement } from '@nativescript/angular';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -9,6 +9,9 @@ import { AppComponent } from "./app.component";
 import { CardsComponent } from "./cards/cards.component";
 import { CardDetailComponent } from "./cards/card-detail.component";
 import { SearchBarComponent } from "./search_bar/searchbar.component";
+
+registerElement('LineChart', () => require('@nativescript-community/ui-chart/charts').LineChart);
+registerElement('PieChart', () => require('@nativescript-community/ui-chart/charts').PieChart);
 
 @NgModule({
     bootstrap: [
@@ -18,7 +21,6 @@ import { SearchBarComponent } from "./search_bar/searchbar.component";
         NativeScriptModule,
         AppRoutingModule,
         HttpClientModule,
-        NativeScriptUIChartModule,
         NativeScriptRouterModule
     ],
     declarations: [

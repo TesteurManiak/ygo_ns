@@ -28,10 +28,10 @@
     "@angular/platform-browser": "^11.0.3",
     "@angular/platform-browser-dynamic": "^11.0.3",
     "@angular/router": "^11.0.3",
+    "@nativescript-community/ui-chart": "^1.1.18",
     "@nativescript/angular": "^11.0.0",
     "@nativescript/core": "^7.0.13",
     "@nativescript/theme": "^3.0.1",
-    "nativescript-ui-chart": "^8.0.2",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",
     "zone.js": "~0.11.1"

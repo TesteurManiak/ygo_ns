@@ -1,10 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router";
 import { map } from 'rxjs/operators';
 import { RouterExtensions } from "@nativescript/angular";
+import { PieChart } from "@nativescript-community/ui-chart/charts/PieChart";
+import { PieDataSet } from "@nativescript-community/ui-chart/data/PieDataSet";
+import { PieData } from "@nativescript-community/ui-chart/data/PieData";
 
 import { Card } from "./card";
+import { GridLayout } from "@nativescript/core";
 
 @Component({
     selector: "ns-card-details",
@@ -14,6 +18,7 @@ import { Card } from "./card";
 })
 export class CardDetailComponent implements OnInit {
     public card: Card;
+    @ViewChild('foo') gridLayout: ElementRef;
 
     constructor(private route: ActivatedRoute, private routerExtensions: RouterExtensions, private http: HttpClient) { }
 
@@ -33,8 +38,68 @@ export class CardDetailComponent implements OnInit {
         });
     }
 
+    ngAfterViewInit() {
+        let myGridLayout = <GridLayout>this.gridLayout.nativeElement;
+        console.log(myGridLayout);
+        let chart = new PieChart();
+        chart.height = 400;
+        chart.onLoaded = () => this.onChartLoaded({ object: chart });
+        myGridLayout.addChild(chart);
+    }
+
     onNavBtnTap() {
-        console.log("Tapped on back btn");
         this.routerExtensions.back();
+    }
+
+    onChartLoaded(args) {
+        console.log(this.card.card_prices);
+        const chart = args.object as PieChart;
+
+        // enable touch gestures
+        chart.setTouchEnabled(true);
+
+        // Set colors
+        chart.setHoleColor('transparent');
+
+        var myData = [];
+        for (let price of this.card.card_prices) {
+            myData.push({
+                color: "#e47911",
+                value: +price.amazon_price
+            });
+            myData.push({
+                color: "#012169",
+                value: +price.cardmarket_price
+            });
+            myData.push({
+                color: "#137796",
+                value: +price.coolstuffinc_price
+            });
+            myData.push({
+                color: "red",
+                value: +price.ebay_price
+            });
+            myData.push({
+                color: "yellow",
+                value: +price.tcgplayer_price
+            });
+        }
+
+        const sets = [];
+        const set = new PieDataSet(myData, 'Prices', 'value');
+        var colors = [];
+        for (let data of myData) {
+            colors.push(data.color);
+        }
+        // set.setColors(['orange', 'blue']);
+        set.setColors(colors);
+
+        sets.push(set);
+
+        // Create a data object with the data sets
+        const ld = new PieData(sets);
+
+        // Set data
+        chart.setData(ld);
     }
 }
