@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, OnInit, AfterViewInit, OnDestroy, ViewChild } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router";
 import { map } from 'rxjs/operators';
@@ -6,8 +6,10 @@ import { RouterExtensions } from "@nativescript/angular";
 import { PieChart } from "@nativescript-community/ui-chart/charts/PieChart";
 import { PieDataSet } from "@nativescript-community/ui-chart/data/PieDataSet";
 import { PieData } from "@nativescript-community/ui-chart/data/PieData";
+import { Subscription } from "rxjs";
 
 import { Card } from "./card";
+import { CardService } from "./card.service";
 import { GridLayout } from "@nativescript/core";
 
 @Component({
@@ -16,11 +18,24 @@ import { GridLayout } from "@nativescript/core";
     styleUrls: ["./card-detail.component.css"],
     moduleId: module.id
 })
-export class CardDetailComponent implements OnInit {
-    public card: Card;
+export class CardDetailComponent implements OnInit, AfterViewInit, OnDestroy {
+    card: Card;
     @ViewChild('foo') gridLayout: ElementRef;
 
-    constructor(private route: ActivatedRoute, private routerExtensions: RouterExtensions, private http: HttpClient) { }
+    private currentCardSub: Subscription;
+
+    constructor(
+        private route: ActivatedRoute,
+        private routerExtensions: RouterExtensions,
+        private service: CardService,
+        private http: HttpClient
+    ) { }
+
+    ngOnDestroy(): void {
+        if (this.currentCardSub) {
+            this.currentCardSub.unsubscribe();
+        }
+    }
 
     ngOnInit(): void {
         const id = +this.route.snapshot.params.id;
@@ -28,7 +43,7 @@ export class CardDetailComponent implements OnInit {
     }
 
     getCard(id: number) {
-        this.http.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?id=" + id).pipe(map(result => (<any>result).data)).subscribe(result => {
+        this.currentCardSub = this.http.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?id=" + id).pipe(map(result => (<any>result).data)).subscribe(result => {
             let cardList = Array(result);
             if (cardList.length > 0) {
                 this.card = new Card().deserialize(result[0]);
